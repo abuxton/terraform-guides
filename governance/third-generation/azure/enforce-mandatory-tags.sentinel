@@ -18,8 +18,18 @@ param resource_types default [
   "azurerm_virtual_network",
 ]
 
+
 # List of mandatory tags
-param mandatory_tags default ["environment"]
+# param mandatory_tags default [
+# 	"environment",
+# ]
+param mandatory_tags default [
+  "Densify-Unique-ID",
+	"Current-instance-type",
+  "Densify-optimal-instance-type",
+  "ensify-potential-monthly-savings",
+  "Densify-predicted-uptime"
+	]
 
 # Get all Azure Resources with standard tags
 allAzureResourcesWithStandardTags =
