@@ -27,7 +27,7 @@ param mandatory_tags default [
   "Densify-Unique-ID",
 	"Current-instance-type",
   "Densify-optimal-instance-type",
-  "ensify-potential-monthly-savings",
+  "Densify-potential-monthly-savings",
   "Densify-predicted-uptime",
 	]
 
