@@ -28,7 +28,7 @@ param mandatory_tags default [
 	"Current-instance-type",
   "Densify-optimal-instance-type",
   "ensify-potential-monthly-savings",
-  "Densify-predicted-uptime"
+  "Densify-predicted-uptime",
 	]
 
 # Get all Azure Resources with standard tags
