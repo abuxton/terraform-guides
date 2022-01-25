@@ -19,6 +19,11 @@ policy "enforce-mandatory-tags" {
     enforcement_level = "advisory"
 }
 
+policy "densify-enforce-mandatory-tags" {
+    source = "./enforce-mandatory-tags.sentinel"
+    enforcement_level = "advisory"
+}
+
 policy "require-database-auditing" {
     source = "./require-database-auditing.sentinel"
     enforcement_level = "advisory"

@@ -1,0 +1,55 @@
+id = "run-c5BKhcHj773vMTw1"
+created_at = "2022-01-25T15:53:31.105Z"
+message = "Triggered via CLI"
+commit_sha = undefined
+speculative = true
+is_destroy = false
+refresh = true
+refresh_only = false
+replace_addrs = null
+target_addrs = null
+
+variables = {
+	"ARM_CLIENT_ID": {
+		"category":  "env",
+		"sensitive": false,
+	},
+	"ARM_CLIENT_SECRET": {
+		"category":  "env",
+		"sensitive": false,
+	},
+	"ARM_SUBSCRIPTION_ID": {
+		"category":  "env",
+		"sensitive": false,
+	},
+	"ARM_TENANT_ID": {
+		"category":  "env",
+		"sensitive": false,
+	},
+}
+
+organization = {
+	"name": "abc-hashi-training",
+}
+
+workspace = {
+	"auto_apply":  false,
+	"created_at":  "2022-01-25T13:15:20.169Z",
+	"description": "",
+	"id":          "ws-gtMgcJMh4rxsk29m",
+	"name":        "tf-workflow-example-densify",
+	"tags":        [],
+	"vcs_repo": {
+		"branch":             "",
+		"display_identifier": "abuxton/tf-workflow-example",
+		"identifier":         "abuxton/tf-workflow-example",
+		"ingress_submodules": false,
+	},
+	"working_directory": "/densify",
+}
+
+cost_estimate = {
+	"delta_monthly_cost":    "83.3679999999999888",
+	"prior_monthly_cost":    "0.0",
+	"proposed_monthly_cost": "83.3679999999999888",
+}

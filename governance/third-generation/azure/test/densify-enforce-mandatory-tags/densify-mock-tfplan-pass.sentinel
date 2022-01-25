@@ -1,0 +1,1988 @@
+terraform_version = "1.1.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"azurerm_managed_disk.test": {
+			"address":        "azurerm_managed_disk.test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"tainted":        false,
+			"type":           "azurerm_managed_disk",
+			"values": {
+				"create_option":                 "Empty",
+				"disk_access_id":                null,
+				"disk_encryption_set_id":        null,
+				"disk_size_gb":                  1023,
+				"encryption_settings":           [],
+				"gallery_image_reference_id":    null,
+				"hyper_v_generation":            null,
+				"image_reference_id":            null,
+				"location":                      "westus2",
+				"name":                          "datadisk_existing",
+				"network_access_policy":         null,
+				"on_demand_bursting_enabled":    null,
+				"os_type":                       null,
+				"public_network_access_enabled": true,
+				"resource_group_name":           "testRG",
+				"source_resource_id":            null,
+				"storage_account_id":            null,
+				"storage_account_type":          "Standard_LRS",
+				"tags":                          null,
+				"timeouts":                      null,
+				"trusted_launch_enabled":        null,
+				"zones":                         null,
+			},
+		},
+		"azurerm_network_interface.test": {
+			"address":        "azurerm_network_interface.test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"tainted":        false,
+			"type":           "azurerm_network_interface",
+			"values": {
+				"enable_accelerated_networking": false,
+				"enable_ip_forwarding":          false,
+				"ip_configuration": [
+					{
+						"name": "testconfiguration1",
+						"private_ip_address_allocation": "dynamic",
+						"private_ip_address_version":    "IPv4",
+						"public_ip_address_id":          null,
+					},
+				],
+				"location":            "westus2",
+				"name":                "testni",
+				"resource_group_name": "testRG",
+				"tags":                null,
+				"timeouts":            null,
+			},
+		},
+		"azurerm_resource_group.test": {
+			"address":        "azurerm_resource_group.test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"tainted":        false,
+			"type":           "azurerm_resource_group",
+			"values": {
+				"location": "westus2",
+				"name":     "testRG",
+				"tags":     null,
+				"timeouts": null,
+			},
+		},
+		"azurerm_subnet.test": {
+			"address":        "azurerm_subnet.test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"tainted":        false,
+			"type":           "azurerm_subnet",
+			"values": {
+				"address_prefixes": [
+					"10.0.2.0/24",
+				],
+				"delegation": [],
+				"enforce_private_link_endpoint_network_policies": false,
+				"enforce_private_link_service_network_policies":  false,
+				"name":                        "testsub",
+				"resource_group_name":         "testRG",
+				"service_endpoint_policy_ids": null,
+				"service_endpoints":           null,
+				"timeouts":                    null,
+				"virtual_network_name":        "testvn",
+			},
+		},
+		"azurerm_virtual_machine.test": {
+			"address":        "azurerm_virtual_machine.test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"tainted":        false,
+			"type":           "azurerm_virtual_machine",
+			"values": {
+				"additional_capabilities":          [],
+				"boot_diagnostics":                 [],
+				"delete_data_disks_on_termination": true,
+				"delete_os_disk_on_termination":    true,
+				"location":                         "westus2",
+				"name":                             "test",
+				"os_profile":                       "REDACTED_SENSITIVE",
+				"os_profile_linux_config": [
+					{
+						"disable_password_authentication": false,
+						"ssh_keys":                        [],
+					},
+				],
+				"os_profile_secrets":        [],
+				"os_profile_windows_config": [],
+				"plan": [],
+				"primary_network_interface_id": null,
+				"proximity_placement_group_id": null,
+				"resource_group_name":          "testRG",
+				"storage_image_reference": [
+					{
+						"id":        "",
+						"offer":     "UbuntuServer",
+						"publisher": "Canonical",
+						"sku":       "16.04-LTS",
+						"version":   "latest",
+					},
+				],
+				"storage_os_disk": [
+					{
+						"caching":                   "ReadWrite",
+						"create_option":             "FromImage",
+						"image_uri":                 null,
+						"managed_disk_type":         "Standard_LRS",
+						"name":                      "myosdisk1",
+						"vhd_uri":                   null,
+						"write_accelerator_enabled": false,
+					},
+				],
+				"tags": {
+					"Current-instance-type":             "Standard_DS1_v2",
+					"Densify-Unique-ID":                 "test",
+					"Densify-optimal-instance-type":     "Standard_DS2_v2",
+					"Densify-potential-monthly-savings": "31.43",
+					"Densify-predicted-uptime":          "83.4",
+					"Name": "test",
+				},
+				"timeouts": null,
+				"vm_size":  "Standard_DS1_v2",
+				"zones":    null,
+			},
+		},
+		"azurerm_virtual_network.test": {
+			"address":        "azurerm_virtual_network.test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"tainted":        false,
+			"type":           "azurerm_virtual_network",
+			"values": {
+				"address_space": [
+					"10.0.0.0/16",
+				],
+				"bgp_community":           null,
+				"ddos_protection_plan":    [],
+				"flow_timeout_in_minutes": null,
+				"location":                "westus2",
+				"name":                    "testvn",
+				"resource_group_name":     "testRG",
+				"tags":                    null,
+				"timeouts":                null,
+				"vm_protection_enabled":   false,
+			},
+		},
+		"module.densify.null_resource.densify_spec": {
+			"address":        "module.densify.null_resource.densify_spec",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.densify",
+			"name":           "densify_spec",
+			"provider_name":  "registry.terraform.io/hashicorp/null",
+			"tainted":        false,
+			"type":           "null_resource",
+			"values": {
+				"triggers": {
+					"approvalType":             "all",
+					"currentType":              "Standard_DS1_v2",
+					"predictedUptime":          "83.4",
+					"recommendedType":          "Standard_DS2_v2",
+					"reservedInstanceCoverage": "no",
+					"savingsEstimate":          "31.43",
+				},
+			},
+		},
+	},
+}
+
+variables = {
+	"densify_fallback": {
+		"name": "densify_fallback",
+		"value": {
+			"approvalType":             "all",
+			"currentType":              "Standard_DS1_v2",
+			"predictedUptime":          "0",
+			"recommendedType":          "Standard_DS1_v2",
+			"reservedInstanceCoverage": "no",
+			"savingsEstimate":          "0",
+		},
+	},
+	"densify_recommendations": {
+		"name": "densify_recommendations",
+		"value": {
+			"test": {
+				"approvalType":             "all",
+				"currentType":              "Standard_DS1_v2",
+				"predictedUptime":          "83.4",
+				"recommendedType":          "Standard_DS2_v2",
+				"reservedInstanceCoverage": "no",
+				"savingsEstimate":          "31.43",
+			},
+		},
+	},
+	"instance_type": {
+		"name":  "instance_type",
+		"value": "Standard_DS1_v2",
+	},
+	"name": {
+		"name":  "name",
+		"value": "test",
+	},
+}
+
+resource_changes = {
+	"azurerm_managed_disk.test": {
+		"address": "azurerm_managed_disk.test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"create_option":                 "Empty",
+				"disk_access_id":                null,
+				"disk_encryption_set_id":        null,
+				"disk_size_gb":                  1023,
+				"encryption_settings":           [],
+				"gallery_image_reference_id":    null,
+				"hyper_v_generation":            null,
+				"image_reference_id":            null,
+				"location":                      "westus2",
+				"name":                          "datadisk_existing",
+				"network_access_policy":         null,
+				"on_demand_bursting_enabled":    null,
+				"os_type":                       null,
+				"public_network_access_enabled": true,
+				"resource_group_name":           "testRG",
+				"source_resource_id":            null,
+				"storage_account_id":            null,
+				"storage_account_type":          "Standard_LRS",
+				"tags":                          null,
+				"timeouts":                      null,
+				"trusted_launch_enabled":        null,
+				"zones":                         null,
+			},
+			"after_unknown": {
+				"disk_iops_read_only":  true,
+				"disk_iops_read_write": true,
+				"disk_mbps_read_only":  true,
+				"disk_mbps_read_write": true,
+				"encryption_settings":  [],
+				"id": true,
+				"logical_sector_size": true,
+				"max_shares":          true,
+				"source_uri":          true,
+				"tier":                true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_managed_disk",
+	},
+	"azurerm_network_interface.test": {
+		"address": "azurerm_network_interface.test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"enable_accelerated_networking": false,
+				"enable_ip_forwarding":          false,
+				"ip_configuration": [
+					{
+						"name": "testconfiguration1",
+						"private_ip_address_allocation": "dynamic",
+						"private_ip_address_version":    "IPv4",
+						"public_ip_address_id":          null,
+					},
+				],
+				"location":            "westus2",
+				"name":                "testni",
+				"resource_group_name": "testRG",
+				"tags":                null,
+				"timeouts":            null,
+			},
+			"after_unknown": {
+				"applied_dns_servers": true,
+				"dns_servers":         true,
+				"id":                  true,
+				"internal_dns_name_label":     true,
+				"internal_domain_name_suffix": true,
+				"ip_configuration": [
+					{
+						"gateway_load_balancer_frontend_ip_configuration_id": true,
+						"primary":            true,
+						"private_ip_address": true,
+						"subnet_id":          true,
+					},
+				],
+				"mac_address":          true,
+				"private_ip_address":   true,
+				"private_ip_addresses": true,
+				"virtual_machine_id":   true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_network_interface",
+	},
+	"azurerm_resource_group.test": {
+		"address": "azurerm_resource_group.test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"location": "westus2",
+				"name":     "testRG",
+				"tags":     null,
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_resource_group",
+	},
+	"azurerm_subnet.test": {
+		"address": "azurerm_subnet.test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"address_prefixes": [
+					"10.0.2.0/24",
+				],
+				"delegation": [],
+				"enforce_private_link_endpoint_network_policies": false,
+				"enforce_private_link_service_network_policies":  false,
+				"name":                        "testsub",
+				"resource_group_name":         "testRG",
+				"service_endpoint_policy_ids": null,
+				"service_endpoints":           null,
+				"timeouts":                    null,
+				"virtual_network_name":        "testvn",
+			},
+			"after_unknown": {
+				"address_prefix": true,
+				"address_prefixes": [
+					false,
+				],
+				"delegation": [],
+				"id":         true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_subnet",
+	},
+	"azurerm_virtual_machine.test": {
+		"address": "azurerm_virtual_machine.test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"additional_capabilities":          [],
+				"boot_diagnostics":                 [],
+				"delete_data_disks_on_termination": true,
+				"delete_os_disk_on_termination":    true,
+				"location":                         "westus2",
+				"name":                             "test",
+				"os_profile":                       "REDACTED_SENSITIVE",
+				"os_profile_linux_config": [
+					{
+						"disable_password_authentication": false,
+						"ssh_keys":                        [],
+					},
+				],
+				"os_profile_secrets":        [],
+				"os_profile_windows_config": [],
+				"plan": [],
+				"primary_network_interface_id": null,
+				"proximity_placement_group_id": null,
+				"resource_group_name":          "testRG",
+				"storage_image_reference": [
+					{
+						"id":        "",
+						"offer":     "UbuntuServer",
+						"publisher": "Canonical",
+						"sku":       "16.04-LTS",
+						"version":   "latest",
+					},
+				],
+				"storage_os_disk": [
+					{
+						"caching":                   "ReadWrite",
+						"create_option":             "FromImage",
+						"image_uri":                 null,
+						"managed_disk_type":         "Standard_LRS",
+						"name":                      "myosdisk1",
+						"vhd_uri":                   null,
+						"write_accelerator_enabled": false,
+					},
+				],
+				"tags": {
+					"Current-instance-type":             "Standard_DS1_v2",
+					"Densify-Unique-ID":                 "test",
+					"Densify-optimal-instance-type":     "Standard_DS2_v2",
+					"Densify-potential-monthly-savings": "31.43",
+					"Densify-predicted-uptime":          "83.4",
+					"Name": "test",
+				},
+				"timeouts": null,
+				"vm_size":  "Standard_DS1_v2",
+				"zones":    null,
+			},
+			"after_unknown": {
+				"additional_capabilities": [],
+				"availability_set_id":     true,
+				"boot_diagnostics":        [],
+				"id":                      true,
+				"identity":                true,
+				"license_type":            true,
+				"network_interface_ids":   true,
+				"os_profile": [
+					{
+						"custom_data": true,
+					},
+				],
+				"os_profile_linux_config": [
+					{
+						"ssh_keys": [],
+					},
+				],
+				"os_profile_secrets":        [],
+				"os_profile_windows_config": [],
+				"plan":              [],
+				"storage_data_disk": true,
+				"storage_image_reference": [
+					{},
+				],
+				"storage_os_disk": [
+					{
+						"disk_size_gb":    true,
+						"managed_disk_id": true,
+						"os_type":         true,
+					},
+				],
+				"tags": {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_virtual_machine",
+	},
+	"azurerm_virtual_network.test": {
+		"address": "azurerm_virtual_network.test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"address_space": [
+					"10.0.0.0/16",
+				],
+				"bgp_community":           null,
+				"ddos_protection_plan":    [],
+				"flow_timeout_in_minutes": null,
+				"location":                "westus2",
+				"name":                    "testvn",
+				"resource_group_name":     "testRG",
+				"tags":                    null,
+				"timeouts":                null,
+				"vm_protection_enabled":   false,
+			},
+			"after_unknown": {
+				"address_space": [
+					false,
+				],
+				"ddos_protection_plan": [],
+				"dns_servers":          true,
+				"guid":                 true,
+				"id":                   true,
+				"subnet":               true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_virtual_network",
+	},
+	"module.densify.null_resource.densify_spec": {
+		"address": "module.densify.null_resource.densify_spec",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"triggers": {
+					"approvalType":             "all",
+					"currentType":              "Standard_DS1_v2",
+					"predictedUptime":          "83.4",
+					"recommendedType":          "Standard_DS2_v2",
+					"reservedInstanceCoverage": "no",
+					"savingsEstimate":          "31.43",
+				},
+			},
+			"after_unknown": {
+				"id":       true,
+				"triggers": {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.densify",
+		"name":           "densify_spec",
+		"provider_name":  "registry.terraform.io/hashicorp/null",
+		"type":           "null_resource",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"azurerm": {
+				"expressions": {
+					"features": [
+						{},
+					],
+					"subscription_id": {
+						"constant_value": "7ee37f25-48ff-4276-ac0b-13fb4f43ffa6",
+					},
+					"tenant_id": {
+						"constant_value": "5f0c2a96-d8f0-4435-a62a-832308b6b476",
+					},
+				},
+				"name":               "azurerm",
+				"version_constraint": "2.93.1",
+			},
+		},
+		"root_module": {
+			"module_calls": {
+				"densify": {
+					"expressions": {
+						"densify_fallback": {
+							"references": [
+								"var.densify_fallback",
+							],
+						},
+						"densify_recommendations": {
+							"references": [
+								"var.densify_recommendations",
+							],
+						},
+						"densify_unique_id": {
+							"references": [
+								"var.name",
+							],
+						},
+					},
+					"module": {
+						"outputs": {
+							"approval_type": {
+								"description": "The type of approval for this system (NA, All, Specific size)",
+								"expression": {
+									"references": [
+										"local.appr_type",
+									],
+								},
+							},
+							"avg_inst_count_current": {
+								"description": "The current average number of instances running in the ASG",
+								"expression": {
+									"references": [
+										"local.avg_inst_count_current",
+									],
+								},
+							},
+							"avg_inst_count_recommended": {
+								"description": "The predicted average number of instances running in the ASG if the recommendations are implemented",
+								"expression": {
+									"references": [
+										"local.avg_inst_count_recommended",
+									],
+								},
+							},
+							"cluster": {
+								"description": "The name of the cluster with the running container",
+								"expression": {
+									"references": [
+										"local.cluster",
+									],
+								},
+							},
+							"container": {
+								"description": "The name of the container",
+								"expression": {
+									"references": [
+										"local.container",
+									],
+								},
+							},
+							"controller_type": {
+								"description": "The type of controller",
+								"expression": {
+									"references": [
+										"local.controller_type",
+									],
+								},
+							},
+							"cpu_limit": {
+								"description": "The CPU limit to be implemented, which is either the current CPU limit or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+								"expression": {
+									"references": [
+										"local.cpu_limit",
+									],
+								},
+							},
+							"cpu_request": {
+								"description": "The CPU request to be implemented, which is either the current CPU request or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+								"expression": {
+									"references": [
+										"local.cpu_request",
+									],
+								},
+							},
+							"current_cpu_limit": {
+								"description": "Current CPU limit for the Kubernetes container",
+								"expression": {
+									"references": [
+										"local.cur_cpu_limit",
+									],
+								},
+							},
+							"current_cpu_request": {
+								"description": "Current CPU request for the Kubernetes container",
+								"expression": {
+									"references": [
+										"local.cur_cpu_request",
+									],
+								},
+							},
+							"current_desired_capacity": {
+								"description": "The current desired number of instances running in the ASG group",
+								"expression": {
+									"references": [
+										"local.current_desired_capacity",
+									],
+								},
+							},
+							"current_mem_limit": {
+								"description": "Current memory limit for the Kubernetes container",
+								"expression": {
+									"references": [
+										"local.cur_mem_limit",
+									],
+								},
+							},
+							"current_mem_request": {
+								"description": "Current memory request for the Kubernetes container",
+								"expression": {
+									"references": [
+										"local.cur_mem_request",
+									],
+								},
+							},
+							"current_size": {
+								"description": "The current number of copies of the controller that are running. Will be 1 for individual pods",
+								"expression": {
+									"references": [
+										"local.current_size",
+									],
+								},
+							},
+							"current_type": {
+								"description": "Current instance size and family",
+								"expression": {
+									"references": [
+										"local.cur_type",
+									],
+								},
+							},
+							"defer_recommendation": {
+								"description": "Defer recommending an instance type change until reserved instance coverage for this instance expires",
+								"expression": {
+									"references": [
+										"local.defer_recommendation",
+									],
+								},
+							},
+							"defer_until": {
+								"description": "If deferRecommendation = yes, then the expiry date of the RI providing coverage for the current instance is returned",
+								"expression": {
+									"references": [
+										"local.defer_until",
+									],
+								},
+							},
+							"desired_capacity": {
+								"description": "The desired capacity to be implemented, which is either the current desired capacity or the recommended average instance count (rounded down) depending on the automation policy and approval status (if approval is enabled)",
+								"expression": {
+									"references": [
+										"local.desired_capacity",
+									],
+								},
+							},
+							"display_name": {
+								"description": "The display name of the container, which is combination of the pod or service name and container name",
+								"expression": {
+									"references": [
+										"local.display_name",
+									],
+								},
+							},
+							"effort": {
+								"description": "The effort rating for implementing the recommendation",
+								"expression": {
+									"references": [
+										"local.effort",
+									],
+								},
+							},
+							"implementation_method": {
+								"description": "Is the system configured to allow automation or manual recommendations",
+								"expression": {
+									"references": [
+										"local.implementation_method",
+									],
+								},
+							},
+							"instance_type": {
+								"description": "The instance size and family to be implemented, which is either the current size or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+								"expression": {
+									"references": [
+										"local.instance_type",
+									],
+								},
+							},
+							"max_group": {
+								"description": "The maximum group size to be implemented, which is either the current maximum group size or the Densify recommended maximum group size depending on the automation policy and approval status (if approval is enabled)",
+								"expression": {
+									"references": [
+										"local.max_group",
+									],
+								},
+							},
+							"max_group_current": {
+								"description": "The current maximum group size of the ASG",
+								"expression": {
+									"references": [
+										"local.max_group_current",
+									],
+								},
+							},
+							"max_group_recommended": {
+								"description": "The recommended maximum group size of the ASG",
+								"expression": {
+									"references": [
+										"local.max_group_recommended",
+									],
+								},
+							},
+							"mem_limit": {
+								"description": "The memory limit to be implemented, which is either the current memory limit or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+								"expression": {
+									"references": [
+										"local.mem_limit",
+									],
+								},
+							},
+							"mem_request": {
+								"description": "The memory request to be implemented, which is either the current memory request or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+								"expression": {
+									"references": [
+										"local.mem_request",
+									],
+								},
+							},
+							"min_group": {
+								"description": "The minimum group size to be implemented, which is either the current minimum group size or the Densify recommended minimum group size depending on the automation policy and approval status (if approval is enabled)",
+								"expression": {
+									"references": [
+										"local.min_group",
+									],
+								},
+							},
+							"min_group_current": {
+								"description": "The current minimum group size of the ASG",
+								"expression": {
+									"references": [
+										"local.min_group_current",
+									],
+								},
+							},
+							"min_group_recommended": {
+								"description": "The recommended minimum group size of the ASG",
+								"expression": {
+									"references": [
+										"local.min_group_recommended",
+									],
+								},
+							},
+							"namespace": {
+								"description": "The namespace of the running container",
+								"expression": {
+									"references": [
+										"local.namespace",
+									],
+								},
+							},
+							"pod_service": {
+								"description": "The pod or service name of the running container. If the container is running in a single pod, then the pod name is displayed. If the container is part of a service, such as a Replication Controller or a Replica Set, then the service name is displayed",
+								"expression": {
+									"references": [
+										"local.pod_service",
+									],
+								},
+							},
+							"policy": {
+								"description": "The policy that is used in the analysis",
+								"expression": {
+									"references": [
+										"local.policy",
+									],
+								},
+							},
+							"power_state": {
+								"description": "The power state of the instance",
+								"expression": {
+									"references": [
+										"local.power_state",
+									],
+								},
+							},
+							"predicted_uptime": {
+								"description": "The predicted percentage of CPU utilization hours over the duration of a month",
+								"expression": {
+									"references": [
+										"local.p_uptime",
+									],
+								},
+							},
+							"recommendation_type": {
+								"description": "The type of recommendation (upsize, downsize, resize, just right)",
+								"expression": {
+									"references": [
+										"local.recommendation_type",
+									],
+								},
+							},
+							"recommended_cpu_limit": {
+								"description": "Recommended CPU limit for the Kubernetes container",
+								"expression": {
+									"references": [
+										"local.rec_cpu_limit",
+									],
+								},
+							},
+							"recommended_cpu_request": {
+								"description": "Recommended CPU request for the Kubernetes container",
+								"expression": {
+									"references": [
+										"local.rec_cpu_request",
+									],
+								},
+							},
+							"recommended_mem_limit": {
+								"description": "Recommended memory limit for the Kubernetes container",
+								"expression": {
+									"references": [
+										"local.rec_mem_limit",
+									],
+								},
+							},
+							"recommended_mem_request": {
+								"description": "Recommended memory request for the Kubernetes container",
+								"expression": {
+									"references": [
+										"local.rec_mem_request",
+									],
+								},
+							},
+							"recommended_type": {
+								"description": "Densify recommended instance size and family",
+								"expression": {
+									"references": [
+										"local.rec_type",
+									],
+								},
+							},
+							"savings_estimate": {
+								"description": "The potential monthly savings from modifying the current instance to the Densify recommended instance",
+								"expression": {
+									"references": [
+										"local.savings",
+									],
+								},
+							},
+						},
+						"resources": [
+							{
+								"address": "null_resource.densify_spec",
+								"expressions": {
+									"triggers": {
+										"references": [
+											"local.temp_map",
+											"var.densify_unique_id",
+										],
+									},
+								},
+								"mode":                "managed",
+								"name":                "densify_spec",
+								"provider_config_key": "densify:null",
+								"schema_version":      0,
+								"type":                "null_resource",
+							},
+						],
+						"variables": {
+							"densify_fallback": {
+								"description": "Fallback map of settings that are used for new infrastructure or systems that are missing sizing details from Densify.",
+							},
+							"densify_recommendations": {
+								"description": "Map of maps generated from the Densify Terraform Forwarder. Contains all of the systems with the settings needed to provide details for tagging as Self-Aware and Self-Optimization",
+							},
+							"densify_unique_id": {
+								"description": "Unique ID that both Terraform and Densify can use to track the systems.",
+							},
+						},
+					},
+					"source":             "densify-dev/optimization-as-code/null",
+					"version_constraint": "2.0.0",
+				},
+			},
+			"resources": [
+				{
+					"address": "azurerm_managed_disk.test",
+					"expressions": {
+						"create_option": {
+							"constant_value": "Empty",
+						},
+						"disk_size_gb": {
+							"constant_value": "1023",
+						},
+						"location": {
+							"references": [
+								"azurerm_resource_group.test.location",
+								"azurerm_resource_group.test",
+							],
+						},
+						"name": {
+							"constant_value": "datadisk_existing",
+						},
+						"resource_group_name": {
+							"references": [
+								"azurerm_resource_group.test.name",
+								"azurerm_resource_group.test",
+							],
+						},
+						"storage_account_type": {
+							"constant_value": "Standard_LRS",
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "azurerm",
+					"schema_version":      0,
+					"type":                "azurerm_managed_disk",
+				},
+				{
+					"address": "azurerm_network_interface.test",
+					"expressions": {
+						"ip_configuration": [
+							{
+								"name": {
+									"constant_value": "testconfiguration1",
+								},
+								"private_ip_address_allocation": {
+									"constant_value": "dynamic",
+								},
+								"subnet_id": {
+									"references": [
+										"azurerm_subnet.test.id",
+										"azurerm_subnet.test",
+									],
+								},
+							},
+						],
+						"location": {
+							"references": [
+								"azurerm_resource_group.test.location",
+								"azurerm_resource_group.test",
+							],
+						},
+						"name": {
+							"constant_value": "testni",
+						},
+						"resource_group_name": {
+							"references": [
+								"azurerm_resource_group.test.name",
+								"azurerm_resource_group.test",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "azurerm",
+					"schema_version":      0,
+					"type":                "azurerm_network_interface",
+				},
+				{
+					"address": "azurerm_resource_group.test",
+					"expressions": {
+						"location": {
+							"constant_value": "West US 2",
+						},
+						"name": {
+							"constant_value": "testRG",
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "azurerm",
+					"schema_version":      0,
+					"type":                "azurerm_resource_group",
+				},
+				{
+					"address": "azurerm_subnet.test",
+					"expressions": {
+						"address_prefixes": {
+							"constant_value": [
+								"10.0.2.0/24",
+							],
+						},
+						"name": {
+							"constant_value": "testsub",
+						},
+						"resource_group_name": {
+							"references": [
+								"azurerm_resource_group.test.name",
+								"azurerm_resource_group.test",
+							],
+						},
+						"virtual_network_name": {
+							"references": [
+								"azurerm_virtual_network.test.name",
+								"azurerm_virtual_network.test",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "azurerm",
+					"schema_version":      0,
+					"type":                "azurerm_subnet",
+				},
+				{
+					"address": "azurerm_virtual_machine.test",
+					"expressions": {
+						"delete_data_disks_on_termination": {
+							"constant_value": true,
+						},
+						"delete_os_disk_on_termination": {
+							"constant_value": true,
+						},
+						"location": {
+							"references": [
+								"azurerm_resource_group.test.location",
+								"azurerm_resource_group.test",
+							],
+						},
+						"name": {
+							"references": [
+								"var.name",
+							],
+						},
+						"network_interface_ids": {
+							"references": [
+								"azurerm_network_interface.test.id",
+								"azurerm_network_interface.test",
+							],
+						},
+						"os_profile": [
+							{
+								"admin_password": {
+									"constant_value": "Password1234!",
+								},
+								"admin_username": {
+									"constant_value": "testadmin",
+								},
+								"computer_name": {
+									"constant_value": "hostname",
+								},
+							},
+						],
+						"os_profile_linux_config": [
+							{
+								"disable_password_authentication": {
+									"constant_value": false,
+								},
+							},
+						],
+						"resource_group_name": {
+							"references": [
+								"azurerm_resource_group.test.name",
+								"azurerm_resource_group.test",
+							],
+						},
+						"storage_image_reference": [
+							{
+								"offer": {
+									"constant_value": "UbuntuServer",
+								},
+								"publisher": {
+									"constant_value": "Canonical",
+								},
+								"sku": {
+									"constant_value": "16.04-LTS",
+								},
+								"version": {
+									"constant_value": "latest",
+								},
+							},
+						],
+						"storage_os_disk": [
+							{
+								"caching": {
+									"constant_value": "ReadWrite",
+								},
+								"create_option": {
+									"constant_value": "FromImage",
+								},
+								"managed_disk_type": {
+									"constant_value": "Standard_LRS",
+								},
+								"name": {
+									"constant_value": "myosdisk1",
+								},
+							},
+						],
+						"tags": {
+							"references": [
+								"var.name",
+								"module.densify.current_type",
+								"module.densify",
+								"module.densify.recommended_type",
+								"module.densify",
+								"module.densify.savings_estimate",
+								"module.densify",
+								"module.densify.predicted_uptime",
+								"module.densify",
+								"var.name",
+							],
+						},
+						"vm_size": {
+							"references": [
+								"var.instance_type",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "azurerm",
+					"schema_version":      0,
+					"type":                "azurerm_virtual_machine",
+				},
+				{
+					"address": "azurerm_virtual_network.test",
+					"expressions": {
+						"address_space": {
+							"constant_value": [
+								"10.0.0.0/16",
+							],
+						},
+						"location": {
+							"references": [
+								"azurerm_resource_group.test.location",
+								"azurerm_resource_group.test",
+							],
+						},
+						"name": {
+							"constant_value": "testvn",
+						},
+						"resource_group_name": {
+							"references": [
+								"azurerm_resource_group.test.name",
+								"azurerm_resource_group.test",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "azurerm",
+					"schema_version":      0,
+					"type":                "azurerm_virtual_network",
+				},
+			],
+			"variables": {
+				"densify_fallback": {
+					"default": {
+						"approvalType":             "all",
+						"currentType":              "Standard_DS1_v2",
+						"predictedUptime":          "0",
+						"recommendedType":          "Standard_DS1_v2",
+						"reservedInstanceCoverage": "no",
+						"savingsEstimate":          "0",
+					},
+				},
+				"densify_recommendations": {
+					"default": {
+						"test": {
+							"approvalType":             "all",
+							"currentType":              "Standard_DS1_v2",
+							"predictedUptime":          "83.4",
+							"recommendedType":          "Standard_DS2_v2",
+							"reservedInstanceCoverage": "no",
+							"savingsEstimate":          "31.43",
+						},
+					},
+				},
+				"instance_type": {
+					"default": "Standard_DS1_v2",
+				},
+				"name": {
+					"default": "test",
+				},
+			},
+		},
+	},
+	"format_version": "1.0",
+	"planned_values": {
+		"root_module": {
+			"child_modules": [
+				{
+					"address": "module.densify",
+					"resources": [
+						{
+							"address":        "module.densify.null_resource.densify_spec",
+							"mode":           "managed",
+							"name":           "densify_spec",
+							"provider_name":  "registry.terraform.io/hashicorp/null",
+							"schema_version": 0,
+							"sensitive_values": {
+								"triggers": {},
+							},
+							"type": "null_resource",
+							"values": {
+								"triggers": {
+									"approvalType":             "all",
+									"currentType":              "Standard_DS1_v2",
+									"predictedUptime":          "83.4",
+									"recommendedType":          "Standard_DS2_v2",
+									"reservedInstanceCoverage": "no",
+									"savingsEstimate":          "31.43",
+								},
+							},
+						},
+					],
+				},
+			],
+			"resources": [
+				{
+					"address":        "azurerm_managed_disk.test",
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+					"schema_version": 0,
+					"sensitive_values": {
+						"encryption_settings": [],
+					},
+					"type": "azurerm_managed_disk",
+					"values": {
+						"create_option":                 "Empty",
+						"disk_access_id":                null,
+						"disk_encryption_set_id":        null,
+						"disk_size_gb":                  1023,
+						"encryption_settings":           [],
+						"gallery_image_reference_id":    null,
+						"hyper_v_generation":            null,
+						"image_reference_id":            null,
+						"location":                      "westus2",
+						"name":                          "datadisk_existing",
+						"network_access_policy":         null,
+						"on_demand_bursting_enabled":    null,
+						"os_type":                       null,
+						"public_network_access_enabled": true,
+						"resource_group_name":           "testRG",
+						"source_resource_id":            null,
+						"storage_account_id":            null,
+						"storage_account_type":          "Standard_LRS",
+						"tags":                          null,
+						"timeouts":                      null,
+						"trusted_launch_enabled":        null,
+						"zones":                         null,
+					},
+				},
+				{
+					"address":        "azurerm_network_interface.test",
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+					"schema_version": 0,
+					"sensitive_values": {
+						"applied_dns_servers": [],
+						"dns_servers":         [],
+						"ip_configuration": [
+							{},
+						],
+						"private_ip_addresses": [],
+					},
+					"type": "azurerm_network_interface",
+					"values": {
+						"enable_accelerated_networking": false,
+						"enable_ip_forwarding":          false,
+						"ip_configuration": [
+							{
+								"name": "testconfiguration1",
+								"private_ip_address_allocation": "dynamic",
+								"private_ip_address_version":    "IPv4",
+								"public_ip_address_id":          null,
+							},
+						],
+						"location":            "westus2",
+						"name":                "testni",
+						"resource_group_name": "testRG",
+						"tags":                null,
+						"timeouts":            null,
+					},
+				},
+				{
+					"address":          "azurerm_resource_group.test",
+					"mode":             "managed",
+					"name":             "test",
+					"provider_name":    "registry.terraform.io/hashicorp/azurerm",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "azurerm_resource_group",
+					"values": {
+						"location": "westus2",
+						"name":     "testRG",
+						"tags":     null,
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "azurerm_subnet.test",
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+					"schema_version": 0,
+					"sensitive_values": {
+						"address_prefixes": [
+							false,
+						],
+						"delegation": [],
+					},
+					"type": "azurerm_subnet",
+					"values": {
+						"address_prefixes": [
+							"10.0.2.0/24",
+						],
+						"delegation": [],
+						"enforce_private_link_endpoint_network_policies": false,
+						"enforce_private_link_service_network_policies":  false,
+						"name":                        "testsub",
+						"resource_group_name":         "testRG",
+						"service_endpoint_policy_ids": null,
+						"service_endpoints":           null,
+						"timeouts":                    null,
+						"virtual_network_name":        "testvn",
+					},
+				},
+				{
+					"address":        "azurerm_virtual_machine.test",
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+					"schema_version": 0,
+					"sensitive_values": {
+						"additional_capabilities": [],
+						"boot_diagnostics":        [],
+						"identity":                [],
+						"network_interface_ids":   [],
+						"os_profile": [
+							{},
+						],
+						"os_profile_linux_config": [
+							{
+								"ssh_keys": [],
+							},
+						],
+						"os_profile_secrets":        [],
+						"os_profile_windows_config": [],
+						"plan":              [],
+						"storage_data_disk": [],
+						"storage_image_reference": [
+							{},
+						],
+						"storage_os_disk": [
+							{},
+						],
+						"tags": {},
+					},
+					"type": "azurerm_virtual_machine",
+					"values": {
+						"additional_capabilities":          [],
+						"boot_diagnostics":                 [],
+						"delete_data_disks_on_termination": true,
+						"delete_os_disk_on_termination":    true,
+						"location":                         "westus2",
+						"name":                             "test",
+						"os_profile":                       "REDACTED_SENSITIVE",
+						"os_profile_linux_config": [
+							{
+								"disable_password_authentication": false,
+								"ssh_keys":                        [],
+							},
+						],
+						"os_profile_secrets":        [],
+						"os_profile_windows_config": [],
+						"plan": [],
+						"primary_network_interface_id": null,
+						"proximity_placement_group_id": null,
+						"resource_group_name":          "testRG",
+						"storage_image_reference": [
+							{
+								"id":        "",
+								"offer":     "UbuntuServer",
+								"publisher": "Canonical",
+								"sku":       "16.04-LTS",
+								"version":   "latest",
+							},
+						],
+						"storage_os_disk": [
+							{
+								"caching":                   "ReadWrite",
+								"create_option":             "FromImage",
+								"image_uri":                 null,
+								"managed_disk_type":         "Standard_LRS",
+								"name":                      "myosdisk1",
+								"vhd_uri":                   null,
+								"write_accelerator_enabled": false,
+							},
+						],
+						"tags": {
+							"Current-instance-type":             "Standard_DS1_v2",
+							"Densify-Unique-ID":                 "test",
+							"Densify-optimal-instance-type":     "Standard_DS2_v2",
+							"Densify-potential-monthly-savings": "31.43",
+							"Densify-predicted-uptime":          "83.4",
+							"Name": "test",
+						},
+						"timeouts": null,
+						"vm_size":  "Standard_DS1_v2",
+						"zones":    null,
+					},
+				},
+				{
+					"address":        "azurerm_virtual_network.test",
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+					"schema_version": 0,
+					"sensitive_values": {
+						"address_space": [
+							false,
+						],
+						"ddos_protection_plan": [],
+						"dns_servers":          [],
+						"subnet":               [],
+					},
+					"type": "azurerm_virtual_network",
+					"values": {
+						"address_space": [
+							"10.0.0.0/16",
+						],
+						"bgp_community":           null,
+						"ddos_protection_plan":    [],
+						"flow_timeout_in_minutes": null,
+						"location":                "westus2",
+						"name":                    "testvn",
+						"resource_group_name":     "testRG",
+						"tags":                    null,
+						"timeouts":                null,
+						"vm_protection_enabled":   false,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "azurerm_managed_disk.test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"create_option":                 "Empty",
+					"disk_access_id":                null,
+					"disk_encryption_set_id":        null,
+					"disk_size_gb":                  1023,
+					"encryption_settings":           [],
+					"gallery_image_reference_id":    null,
+					"hyper_v_generation":            null,
+					"image_reference_id":            null,
+					"location":                      "westus2",
+					"name":                          "datadisk_existing",
+					"network_access_policy":         null,
+					"on_demand_bursting_enabled":    null,
+					"os_type":                       null,
+					"public_network_access_enabled": true,
+					"resource_group_name":           "testRG",
+					"source_resource_id":            null,
+					"storage_account_id":            null,
+					"storage_account_type":          "Standard_LRS",
+					"tags":                          null,
+					"timeouts":                      null,
+					"trusted_launch_enabled":        null,
+					"zones":                         null,
+				},
+				"after_sensitive": {
+					"encryption_settings": [],
+				},
+				"after_unknown": {
+					"disk_iops_read_only":  true,
+					"disk_iops_read_write": true,
+					"disk_mbps_read_only":  true,
+					"disk_mbps_read_write": true,
+					"encryption_settings":  [],
+					"id": true,
+					"logical_sector_size": true,
+					"max_shares":          true,
+					"source_uri":          true,
+					"tier":                true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "registry.terraform.io/hashicorp/azurerm",
+			"type":          "azurerm_managed_disk",
+		},
+		{
+			"address": "azurerm_network_interface.test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"enable_accelerated_networking": false,
+					"enable_ip_forwarding":          false,
+					"ip_configuration": [
+						{
+							"name": "testconfiguration1",
+							"private_ip_address_allocation": "dynamic",
+							"private_ip_address_version":    "IPv4",
+							"public_ip_address_id":          null,
+						},
+					],
+					"location":            "westus2",
+					"name":                "testni",
+					"resource_group_name": "testRG",
+					"tags":                null,
+					"timeouts":            null,
+				},
+				"after_sensitive": {
+					"applied_dns_servers": [],
+					"dns_servers":         [],
+					"ip_configuration": [
+						{},
+					],
+					"private_ip_addresses": [],
+				},
+				"after_unknown": {
+					"applied_dns_servers": true,
+					"dns_servers":         true,
+					"id":                  true,
+					"internal_dns_name_label":     true,
+					"internal_domain_name_suffix": true,
+					"ip_configuration": [
+						{
+							"gateway_load_balancer_frontend_ip_configuration_id": true,
+							"primary":            true,
+							"private_ip_address": true,
+							"subnet_id":          true,
+						},
+					],
+					"mac_address":          true,
+					"private_ip_address":   true,
+					"private_ip_addresses": true,
+					"virtual_machine_id":   true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "registry.terraform.io/hashicorp/azurerm",
+			"type":          "azurerm_network_interface",
+		},
+		{
+			"address": "azurerm_resource_group.test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"location": "westus2",
+					"name":     "testRG",
+					"tags":     null,
+					"timeouts": null,
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "registry.terraform.io/hashicorp/azurerm",
+			"type":          "azurerm_resource_group",
+		},
+		{
+			"address": "azurerm_subnet.test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"address_prefixes": [
+						"10.0.2.0/24",
+					],
+					"delegation": [],
+					"enforce_private_link_endpoint_network_policies": false,
+					"enforce_private_link_service_network_policies":  false,
+					"name":                        "testsub",
+					"resource_group_name":         "testRG",
+					"service_endpoint_policy_ids": null,
+					"service_endpoints":           null,
+					"timeouts":                    null,
+					"virtual_network_name":        "testvn",
+				},
+				"after_sensitive": {
+					"address_prefixes": [
+						false,
+					],
+					"delegation": [],
+				},
+				"after_unknown": {
+					"address_prefix": true,
+					"address_prefixes": [
+						false,
+					],
+					"delegation": [],
+					"id":         true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "registry.terraform.io/hashicorp/azurerm",
+			"type":          "azurerm_subnet",
+		},
+		{
+			"address": "azurerm_virtual_machine.test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"additional_capabilities":          [],
+					"boot_diagnostics":                 [],
+					"delete_data_disks_on_termination": true,
+					"delete_os_disk_on_termination":    true,
+					"location":                         "westus2",
+					"name":                             "test",
+					"os_profile":                       "REDACTED_SENSITIVE",
+					"os_profile_linux_config": [
+						{
+							"disable_password_authentication": false,
+							"ssh_keys":                        [],
+						},
+					],
+					"os_profile_secrets":        [],
+					"os_profile_windows_config": [],
+					"plan": [],
+					"primary_network_interface_id": null,
+					"proximity_placement_group_id": null,
+					"resource_group_name":          "testRG",
+					"storage_image_reference": [
+						{
+							"id":        "",
+							"offer":     "UbuntuServer",
+							"publisher": "Canonical",
+							"sku":       "16.04-LTS",
+							"version":   "latest",
+						},
+					],
+					"storage_os_disk": [
+						{
+							"caching":                   "ReadWrite",
+							"create_option":             "FromImage",
+							"image_uri":                 null,
+							"managed_disk_type":         "Standard_LRS",
+							"name":                      "myosdisk1",
+							"vhd_uri":                   null,
+							"write_accelerator_enabled": false,
+						},
+					],
+					"tags": {
+						"Current-instance-type":             "Standard_DS1_v2",
+						"Densify-Unique-ID":                 "test",
+						"Densify-optimal-instance-type":     "Standard_DS2_v2",
+						"Densify-potential-monthly-savings": "31.43",
+						"Densify-predicted-uptime":          "83.4",
+						"Name": "test",
+					},
+					"timeouts": null,
+					"vm_size":  "Standard_DS1_v2",
+					"zones":    null,
+				},
+				"after_sensitive": {
+					"additional_capabilities": [],
+					"boot_diagnostics":        [],
+					"identity":                [],
+					"network_interface_ids":   [],
+					"os_profile":              true,
+					"os_profile_linux_config": [
+						{
+							"ssh_keys": [],
+						},
+					],
+					"os_profile_secrets":        [],
+					"os_profile_windows_config": [],
+					"plan":              [],
+					"storage_data_disk": [],
+					"storage_image_reference": [
+						{},
+					],
+					"storage_os_disk": [
+						{},
+					],
+					"tags": {},
+				},
+				"after_unknown": {
+					"additional_capabilities": [],
+					"availability_set_id":     true,
+					"boot_diagnostics":        [],
+					"id":                      true,
+					"identity":                true,
+					"license_type":            true,
+					"network_interface_ids":   true,
+					"os_profile": [
+						{
+							"custom_data": true,
+						},
+					],
+					"os_profile_linux_config": [
+						{
+							"ssh_keys": [],
+						},
+					],
+					"os_profile_secrets":        [],
+					"os_profile_windows_config": [],
+					"plan":              [],
+					"storage_data_disk": true,
+					"storage_image_reference": [
+						{},
+					],
+					"storage_os_disk": [
+						{
+							"disk_size_gb":    true,
+							"managed_disk_id": true,
+							"os_type":         true,
+						},
+					],
+					"tags": {},
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "registry.terraform.io/hashicorp/azurerm",
+			"type":          "azurerm_virtual_machine",
+		},
+		{
+			"address": "azurerm_virtual_network.test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"address_space": [
+						"10.0.0.0/16",
+					],
+					"bgp_community":           null,
+					"ddos_protection_plan":    [],
+					"flow_timeout_in_minutes": null,
+					"location":                "westus2",
+					"name":                    "testvn",
+					"resource_group_name":     "testRG",
+					"tags":                    null,
+					"timeouts":                null,
+					"vm_protection_enabled":   false,
+				},
+				"after_sensitive": {
+					"address_space": [
+						false,
+					],
+					"ddos_protection_plan": [],
+					"dns_servers":          [],
+					"subnet":               [],
+				},
+				"after_unknown": {
+					"address_space": [
+						false,
+					],
+					"ddos_protection_plan": [],
+					"dns_servers":          true,
+					"guid":                 true,
+					"id":                   true,
+					"subnet":               true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "registry.terraform.io/hashicorp/azurerm",
+			"type":          "azurerm_virtual_network",
+		},
+		{
+			"address": "module.densify.null_resource.densify_spec",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"triggers": {
+						"approvalType":             "all",
+						"currentType":              "Standard_DS1_v2",
+						"predictedUptime":          "83.4",
+						"recommendedType":          "Standard_DS2_v2",
+						"reservedInstanceCoverage": "no",
+						"savingsEstimate":          "31.43",
+					},
+				},
+				"after_sensitive": {
+					"triggers": {},
+				},
+				"after_unknown": {
+					"id":       true,
+					"triggers": {},
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":           "managed",
+			"module_address": "module.densify",
+			"name":           "densify_spec",
+			"provider_name":  "registry.terraform.io/hashicorp/null",
+			"type":           "null_resource",
+		},
+	],
+	"terraform_version": "1.1.4",
+	"variables": {
+		"densify_fallback": {
+			"value": {
+				"approvalType":             "all",
+				"currentType":              "Standard_DS1_v2",
+				"predictedUptime":          "0",
+				"recommendedType":          "Standard_DS1_v2",
+				"reservedInstanceCoverage": "no",
+				"savingsEstimate":          "0",
+			},
+		},
+		"densify_recommendations": {
+			"value": {
+				"test": {
+					"approvalType":             "all",
+					"currentType":              "Standard_DS1_v2",
+					"predictedUptime":          "83.4",
+					"recommendedType":          "Standard_DS2_v2",
+					"reservedInstanceCoverage": "no",
+					"savingsEstimate":          "31.43",
+				},
+			},
+		},
+		"instance_type": {
+			"value": "Standard_DS1_v2",
+		},
+		"name": {
+			"value": "test",
+		},
+	},
+}

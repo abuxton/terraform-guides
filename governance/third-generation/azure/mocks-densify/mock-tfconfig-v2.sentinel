@@ -1,0 +1,938 @@
+import "strings"
+
+providers = {
+	"azurerm": {
+		"alias": "",
+		"config": {
+			"features": [
+				{},
+			],
+			"subscription_id": {
+				"constant_value": "7ee37f25-48ff-4276-ac0b-13fb4f43ffa6",
+			},
+			"tenant_id": {
+				"constant_value": "5f0c2a96-d8f0-4435-a62a-832308b6b476",
+			},
+		},
+		"module_address":      "",
+		"name":                "azurerm",
+		"provider_config_key": "azurerm",
+		"version_constraint":  "2.93.1",
+	},
+}
+
+resources = {
+	"azurerm_managed_disk.test": {
+		"address": "azurerm_managed_disk.test",
+		"config": {
+			"create_option": {
+				"constant_value": "Empty",
+			},
+			"disk_size_gb": {
+				"constant_value": "1023",
+			},
+			"location": {
+				"references": [
+					"azurerm_resource_group.test.location",
+					"azurerm_resource_group.test",
+				],
+			},
+			"name": {
+				"constant_value": "datadisk_existing",
+			},
+			"resource_group_name": {
+				"references": [
+					"azurerm_resource_group.test.name",
+					"azurerm_resource_group.test",
+				],
+			},
+			"storage_account_type": {
+				"constant_value": "Standard_LRS",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_managed_disk",
+	},
+	"azurerm_network_interface.test": {
+		"address": "azurerm_network_interface.test",
+		"config": {
+			"ip_configuration": [
+				{
+					"name": {
+						"constant_value": "testconfiguration1",
+					},
+					"private_ip_address_allocation": {
+						"constant_value": "dynamic",
+					},
+					"subnet_id": {
+						"references": [
+							"azurerm_subnet.test.id",
+							"azurerm_subnet.test",
+						],
+					},
+				},
+			],
+			"location": {
+				"references": [
+					"azurerm_resource_group.test.location",
+					"azurerm_resource_group.test",
+				],
+			},
+			"name": {
+				"constant_value": "testni",
+			},
+			"resource_group_name": {
+				"references": [
+					"azurerm_resource_group.test.name",
+					"azurerm_resource_group.test",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_network_interface",
+	},
+	"azurerm_resource_group.test": {
+		"address": "azurerm_resource_group.test",
+		"config": {
+			"location": {
+				"constant_value": "West US 2",
+			},
+			"name": {
+				"constant_value": "testRG",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_resource_group",
+	},
+	"azurerm_subnet.test": {
+		"address": "azurerm_subnet.test",
+		"config": {
+			"address_prefixes": {
+				"constant_value": [
+					"10.0.2.0/24",
+				],
+			},
+			"name": {
+				"constant_value": "testsub",
+			},
+			"resource_group_name": {
+				"references": [
+					"azurerm_resource_group.test.name",
+					"azurerm_resource_group.test",
+				],
+			},
+			"virtual_network_name": {
+				"references": [
+					"azurerm_virtual_network.test.name",
+					"azurerm_virtual_network.test",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_subnet",
+	},
+	"azurerm_virtual_machine.test": {
+		"address": "azurerm_virtual_machine.test",
+		"config": {
+			"delete_data_disks_on_termination": {
+				"constant_value": true,
+			},
+			"delete_os_disk_on_termination": {
+				"constant_value": true,
+			},
+			"location": {
+				"references": [
+					"azurerm_resource_group.test.location",
+					"azurerm_resource_group.test",
+				],
+			},
+			"name": {
+				"references": [
+					"var.name",
+				],
+			},
+			"network_interface_ids": {
+				"references": [
+					"azurerm_network_interface.test.id",
+					"azurerm_network_interface.test",
+				],
+			},
+			"os_profile": [
+				{
+					"admin_password": {
+						"constant_value": "Password1234!",
+					},
+					"admin_username": {
+						"constant_value": "testadmin",
+					},
+					"computer_name": {
+						"constant_value": "hostname",
+					},
+				},
+			],
+			"os_profile_linux_config": [
+				{
+					"disable_password_authentication": {
+						"constant_value": false,
+					},
+				},
+			],
+			"resource_group_name": {
+				"references": [
+					"azurerm_resource_group.test.name",
+					"azurerm_resource_group.test",
+				],
+			},
+			"storage_image_reference": [
+				{
+					"offer": {
+						"constant_value": "UbuntuServer",
+					},
+					"publisher": {
+						"constant_value": "Canonical",
+					},
+					"sku": {
+						"constant_value": "16.04-LTS",
+					},
+					"version": {
+						"constant_value": "latest",
+					},
+				},
+			],
+			"storage_os_disk": [
+				{
+					"caching": {
+						"constant_value": "ReadWrite",
+					},
+					"create_option": {
+						"constant_value": "FromImage",
+					},
+					"managed_disk_type": {
+						"constant_value": "Standard_LRS",
+					},
+					"name": {
+						"constant_value": "myosdisk1",
+					},
+				},
+			],
+			"tags": {
+				"references": [
+					"var.name",
+					"module.densify.current_type",
+					"module.densify",
+					"module.densify.recommended_type",
+					"module.densify",
+					"module.densify.savings_estimate",
+					"module.densify",
+					"module.densify.predicted_uptime",
+					"module.densify",
+					"var.name",
+				],
+			},
+			"vm_size": {
+				"references": [
+					"var.instance_type",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_virtual_machine",
+	},
+	"azurerm_virtual_network.test": {
+		"address": "azurerm_virtual_network.test",
+		"config": {
+			"address_space": {
+				"constant_value": [
+					"10.0.0.0/16",
+				],
+			},
+			"location": {
+				"references": [
+					"azurerm_resource_group.test.location",
+					"azurerm_resource_group.test",
+				],
+			},
+			"name": {
+				"constant_value": "testvn",
+			},
+			"resource_group_name": {
+				"references": [
+					"azurerm_resource_group.test.name",
+					"azurerm_resource_group.test",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_virtual_network",
+	},
+	"module.densify.null_resource.densify_spec": {
+		"address": "module.densify.null_resource.densify_spec",
+		"config": {
+			"triggers": {
+				"references": [
+					"local.temp_map",
+					"var.densify_unique_id",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.densify",
+		"name":                "densify_spec",
+		"provider_config_key": "module.densify:null",
+		"provisioners":        [],
+		"type":                "null_resource",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"densify_fallback": {
+		"default": {
+			"approvalType":             "all",
+			"currentType":              "Standard_DS1_v2",
+			"predictedUptime":          "0",
+			"recommendedType":          "Standard_DS1_v2",
+			"reservedInstanceCoverage": "no",
+			"savingsEstimate":          "0",
+		},
+		"description":    "",
+		"module_address": "",
+		"name":           "densify_fallback",
+	},
+	"densify_recommendations": {
+		"default": {
+			"test": {
+				"approvalType":             "all",
+				"currentType":              "Standard_DS1_v2",
+				"predictedUptime":          "83.4",
+				"recommendedType":          "Standard_DS2_v2",
+				"reservedInstanceCoverage": "no",
+				"savingsEstimate":          "31.43",
+			},
+		},
+		"description":    "",
+		"module_address": "",
+		"name":           "densify_recommendations",
+	},
+	"instance_type": {
+		"default":        "Standard_DS1_v2",
+		"description":    "",
+		"module_address": "",
+		"name":           "instance_type",
+	},
+	"module.densify:densify_fallback": {
+		"default":        null,
+		"description":    "Fallback map of settings that are used for new infrastructure or systems that are missing sizing details from Densify.",
+		"module_address": "module.densify",
+		"name":           "densify_fallback",
+	},
+	"module.densify:densify_recommendations": {
+		"default":        null,
+		"description":    "Map of maps generated from the Densify Terraform Forwarder. Contains all of the systems with the settings needed to provide details for tagging as Self-Aware and Self-Optimization",
+		"module_address": "module.densify",
+		"name":           "densify_recommendations",
+	},
+	"module.densify:densify_unique_id": {
+		"default":        null,
+		"description":    "Unique ID that both Terraform and Densify can use to track the systems.",
+		"module_address": "module.densify",
+		"name":           "densify_unique_id",
+	},
+	"name": {
+		"default":        "test",
+		"description":    "",
+		"module_address": "",
+		"name":           "name",
+	},
+}
+
+outputs = {
+	"module.densify:approval_type": {
+		"depends_on":     [],
+		"description":    "The type of approval for this system (NA, All, Specific size)",
+		"module_address": "module.densify",
+		"name":           "approval_type",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.appr_type",
+			],
+		},
+	},
+	"module.densify:avg_inst_count_current": {
+		"depends_on":     [],
+		"description":    "The current average number of instances running in the ASG",
+		"module_address": "module.densify",
+		"name":           "avg_inst_count_current",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.avg_inst_count_current",
+			],
+		},
+	},
+	"module.densify:avg_inst_count_recommended": {
+		"depends_on":     [],
+		"description":    "The predicted average number of instances running in the ASG if the recommendations are implemented",
+		"module_address": "module.densify",
+		"name":           "avg_inst_count_recommended",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.avg_inst_count_recommended",
+			],
+		},
+	},
+	"module.densify:cluster": {
+		"depends_on":     [],
+		"description":    "The name of the cluster with the running container",
+		"module_address": "module.densify",
+		"name":           "cluster",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.cluster",
+			],
+		},
+	},
+	"module.densify:container": {
+		"depends_on":     [],
+		"description":    "The name of the container",
+		"module_address": "module.densify",
+		"name":           "container",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.container",
+			],
+		},
+	},
+	"module.densify:controller_type": {
+		"depends_on":     [],
+		"description":    "The type of controller",
+		"module_address": "module.densify",
+		"name":           "controller_type",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.controller_type",
+			],
+		},
+	},
+	"module.densify:cpu_limit": {
+		"depends_on":     [],
+		"description":    "The CPU limit to be implemented, which is either the current CPU limit or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+		"module_address": "module.densify",
+		"name":           "cpu_limit",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.cpu_limit",
+			],
+		},
+	},
+	"module.densify:cpu_request": {
+		"depends_on":     [],
+		"description":    "The CPU request to be implemented, which is either the current CPU request or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+		"module_address": "module.densify",
+		"name":           "cpu_request",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.cpu_request",
+			],
+		},
+	},
+	"module.densify:current_cpu_limit": {
+		"depends_on":     [],
+		"description":    "Current CPU limit for the Kubernetes container",
+		"module_address": "module.densify",
+		"name":           "current_cpu_limit",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.cur_cpu_limit",
+			],
+		},
+	},
+	"module.densify:current_cpu_request": {
+		"depends_on":     [],
+		"description":    "Current CPU request for the Kubernetes container",
+		"module_address": "module.densify",
+		"name":           "current_cpu_request",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.cur_cpu_request",
+			],
+		},
+	},
+	"module.densify:current_desired_capacity": {
+		"depends_on":     [],
+		"description":    "The current desired number of instances running in the ASG group",
+		"module_address": "module.densify",
+		"name":           "current_desired_capacity",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.current_desired_capacity",
+			],
+		},
+	},
+	"module.densify:current_mem_limit": {
+		"depends_on":     [],
+		"description":    "Current memory limit for the Kubernetes container",
+		"module_address": "module.densify",
+		"name":           "current_mem_limit",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.cur_mem_limit",
+			],
+		},
+	},
+	"module.densify:current_mem_request": {
+		"depends_on":     [],
+		"description":    "Current memory request for the Kubernetes container",
+		"module_address": "module.densify",
+		"name":           "current_mem_request",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.cur_mem_request",
+			],
+		},
+	},
+	"module.densify:current_size": {
+		"depends_on":     [],
+		"description":    "The current number of copies of the controller that are running. Will be 1 for individual pods",
+		"module_address": "module.densify",
+		"name":           "current_size",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.current_size",
+			],
+		},
+	},
+	"module.densify:current_type": {
+		"depends_on":     [],
+		"description":    "Current instance size and family",
+		"module_address": "module.densify",
+		"name":           "current_type",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.cur_type",
+			],
+		},
+	},
+	"module.densify:defer_recommendation": {
+		"depends_on":     [],
+		"description":    "Defer recommending an instance type change until reserved instance coverage for this instance expires",
+		"module_address": "module.densify",
+		"name":           "defer_recommendation",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.defer_recommendation",
+			],
+		},
+	},
+	"module.densify:defer_until": {
+		"depends_on":     [],
+		"description":    "If deferRecommendation = yes, then the expiry date of the RI providing coverage for the current instance is returned",
+		"module_address": "module.densify",
+		"name":           "defer_until",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.defer_until",
+			],
+		},
+	},
+	"module.densify:desired_capacity": {
+		"depends_on":     [],
+		"description":    "The desired capacity to be implemented, which is either the current desired capacity or the recommended average instance count (rounded down) depending on the automation policy and approval status (if approval is enabled)",
+		"module_address": "module.densify",
+		"name":           "desired_capacity",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.desired_capacity",
+			],
+		},
+	},
+	"module.densify:display_name": {
+		"depends_on":     [],
+		"description":    "The display name of the container, which is combination of the pod or service name and container name",
+		"module_address": "module.densify",
+		"name":           "display_name",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.display_name",
+			],
+		},
+	},
+	"module.densify:effort": {
+		"depends_on":     [],
+		"description":    "The effort rating for implementing the recommendation",
+		"module_address": "module.densify",
+		"name":           "effort",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.effort",
+			],
+		},
+	},
+	"module.densify:implementation_method": {
+		"depends_on":     [],
+		"description":    "Is the system configured to allow automation or manual recommendations",
+		"module_address": "module.densify",
+		"name":           "implementation_method",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.implementation_method",
+			],
+		},
+	},
+	"module.densify:instance_type": {
+		"depends_on":     [],
+		"description":    "The instance size and family to be implemented, which is either the current size or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+		"module_address": "module.densify",
+		"name":           "instance_type",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.instance_type",
+			],
+		},
+	},
+	"module.densify:max_group": {
+		"depends_on":     [],
+		"description":    "The maximum group size to be implemented, which is either the current maximum group size or the Densify recommended maximum group size depending on the automation policy and approval status (if approval is enabled)",
+		"module_address": "module.densify",
+		"name":           "max_group",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.max_group",
+			],
+		},
+	},
+	"module.densify:max_group_current": {
+		"depends_on":     [],
+		"description":    "The current maximum group size of the ASG",
+		"module_address": "module.densify",
+		"name":           "max_group_current",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.max_group_current",
+			],
+		},
+	},
+	"module.densify:max_group_recommended": {
+		"depends_on":     [],
+		"description":    "The recommended maximum group size of the ASG",
+		"module_address": "module.densify",
+		"name":           "max_group_recommended",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.max_group_recommended",
+			],
+		},
+	},
+	"module.densify:mem_limit": {
+		"depends_on":     [],
+		"description":    "The memory limit to be implemented, which is either the current memory limit or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+		"module_address": "module.densify",
+		"name":           "mem_limit",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.mem_limit",
+			],
+		},
+	},
+	"module.densify:mem_request": {
+		"depends_on":     [],
+		"description":    "The memory request to be implemented, which is either the current memory request or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+		"module_address": "module.densify",
+		"name":           "mem_request",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.mem_request",
+			],
+		},
+	},
+	"module.densify:min_group": {
+		"depends_on":     [],
+		"description":    "The minimum group size to be implemented, which is either the current minimum group size or the Densify recommended minimum group size depending on the automation policy and approval status (if approval is enabled)",
+		"module_address": "module.densify",
+		"name":           "min_group",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.min_group",
+			],
+		},
+	},
+	"module.densify:min_group_current": {
+		"depends_on":     [],
+		"description":    "The current minimum group size of the ASG",
+		"module_address": "module.densify",
+		"name":           "min_group_current",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.min_group_current",
+			],
+		},
+	},
+	"module.densify:min_group_recommended": {
+		"depends_on":     [],
+		"description":    "The recommended minimum group size of the ASG",
+		"module_address": "module.densify",
+		"name":           "min_group_recommended",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.min_group_recommended",
+			],
+		},
+	},
+	"module.densify:namespace": {
+		"depends_on":     [],
+		"description":    "The namespace of the running container",
+		"module_address": "module.densify",
+		"name":           "namespace",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.namespace",
+			],
+		},
+	},
+	"module.densify:pod_service": {
+		"depends_on":     [],
+		"description":    "The pod or service name of the running container. If the container is running in a single pod, then the pod name is displayed. If the container is part of a service, such as a Replication Controller or a Replica Set, then the service name is displayed",
+		"module_address": "module.densify",
+		"name":           "pod_service",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.pod_service",
+			],
+		},
+	},
+	"module.densify:policy": {
+		"depends_on":     [],
+		"description":    "The policy that is used in the analysis",
+		"module_address": "module.densify",
+		"name":           "policy",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.policy",
+			],
+		},
+	},
+	"module.densify:power_state": {
+		"depends_on":     [],
+		"description":    "The power state of the instance",
+		"module_address": "module.densify",
+		"name":           "power_state",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.power_state",
+			],
+		},
+	},
+	"module.densify:predicted_uptime": {
+		"depends_on":     [],
+		"description":    "The predicted percentage of CPU utilization hours over the duration of a month",
+		"module_address": "module.densify",
+		"name":           "predicted_uptime",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.p_uptime",
+			],
+		},
+	},
+	"module.densify:recommendation_type": {
+		"depends_on":     [],
+		"description":    "The type of recommendation (upsize, downsize, resize, just right)",
+		"module_address": "module.densify",
+		"name":           "recommendation_type",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.recommendation_type",
+			],
+		},
+	},
+	"module.densify:recommended_cpu_limit": {
+		"depends_on":     [],
+		"description":    "Recommended CPU limit for the Kubernetes container",
+		"module_address": "module.densify",
+		"name":           "recommended_cpu_limit",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.rec_cpu_limit",
+			],
+		},
+	},
+	"module.densify:recommended_cpu_request": {
+		"depends_on":     [],
+		"description":    "Recommended CPU request for the Kubernetes container",
+		"module_address": "module.densify",
+		"name":           "recommended_cpu_request",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.rec_cpu_request",
+			],
+		},
+	},
+	"module.densify:recommended_mem_limit": {
+		"depends_on":     [],
+		"description":    "Recommended memory limit for the Kubernetes container",
+		"module_address": "module.densify",
+		"name":           "recommended_mem_limit",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.rec_mem_limit",
+			],
+		},
+	},
+	"module.densify:recommended_mem_request": {
+		"depends_on":     [],
+		"description":    "Recommended memory request for the Kubernetes container",
+		"module_address": "module.densify",
+		"name":           "recommended_mem_request",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.rec_mem_request",
+			],
+		},
+	},
+	"module.densify:recommended_type": {
+		"depends_on":     [],
+		"description":    "Densify recommended instance size and family",
+		"module_address": "module.densify",
+		"name":           "recommended_type",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.rec_type",
+			],
+		},
+	},
+	"module.densify:savings_estimate": {
+		"depends_on":     [],
+		"description":    "The potential monthly savings from modifying the current instance to the Densify recommended instance",
+		"module_address": "module.densify",
+		"name":           "savings_estimate",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"local.savings",
+			],
+		},
+	},
+}
+
+module_calls = {
+	"densify": {
+		"config": {
+			"densify_fallback": {
+				"references": [
+					"var.densify_fallback",
+				],
+			},
+			"densify_recommendations": {
+				"references": [
+					"var.densify_recommendations",
+				],
+			},
+			"densify_unique_id": {
+				"references": [
+					"var.name",
+				],
+			},
+		},
+		"count":              {},
+		"depends_on":         [],
+		"for_each":           {},
+		"module_address":     "",
+		"name":               "densify",
+		"source":             "densify-dev/optimization-as-code/null",
+		"version_constraint": "2.0.0",
+	},
+}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

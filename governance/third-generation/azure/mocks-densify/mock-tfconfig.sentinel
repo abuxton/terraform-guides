@@ -1,0 +1,765 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"modules": {
+			"densify": {
+				"config": {},
+				"references": {
+					"densify_fallback": [
+						"var.densify_fallback",
+					],
+					"densify_recommendations": [
+						"var.densify_recommendations",
+					],
+					"densify_unique_id": [
+						"var.name",
+					],
+				},
+				"source":  "densify-dev/optimization-as-code/null",
+				"version": "2.0.0",
+			},
+		},
+		"outputs": {},
+		"providers": {
+			"azurerm": {
+				"alias": {
+					"": {
+						"config": {
+							"features": [
+								{},
+							],
+							"subscription_id": "7ee37f25-48ff-4276-ac0b-13fb4f43ffa6",
+							"tenant_id":       "5f0c2a96-d8f0-4435-a62a-832308b6b476",
+						},
+						"references": {
+							"features": [
+								{},
+							],
+							"subscription_id": [],
+							"tenant_id":       [],
+						},
+						"version": "2.93.1",
+					},
+				},
+				"config": {
+					"features": [
+						{},
+					],
+					"subscription_id": "7ee37f25-48ff-4276-ac0b-13fb4f43ffa6",
+					"tenant_id":       "5f0c2a96-d8f0-4435-a62a-832308b6b476",
+				},
+				"references": {
+					"features": [
+						{},
+					],
+					"subscription_id": [],
+					"tenant_id":       [],
+				},
+				"version": "2.93.1",
+			},
+		},
+		"resources": {
+			"azurerm_managed_disk": {
+				"test": {
+					"config": {
+						"create_option":        "Empty",
+						"disk_size_gb":         "1023",
+						"name":                 "datadisk_existing",
+						"storage_account_type": "Standard_LRS",
+					},
+					"provisioners": null,
+					"references": {
+						"create_option": [],
+						"disk_size_gb":  [],
+						"location": [
+							"azurerm_resource_group.test.location",
+							"azurerm_resource_group.test",
+						],
+						"name": [],
+						"resource_group_name": [
+							"azurerm_resource_group.test.name",
+							"azurerm_resource_group.test",
+						],
+						"storage_account_type": [],
+					},
+				},
+			},
+			"azurerm_network_interface": {
+				"test": {
+					"config": {
+						"ip_configuration": [
+							{
+								"name": "testconfiguration1",
+								"private_ip_address_allocation": "dynamic",
+							},
+						],
+						"name": "testni",
+					},
+					"provisioners": null,
+					"references": {
+						"ip_configuration": [
+							{
+								"name": [],
+								"private_ip_address_allocation": [],
+								"subnet_id": [
+									"azurerm_subnet.test.id",
+									"azurerm_subnet.test",
+								],
+							},
+						],
+						"location": [
+							"azurerm_resource_group.test.location",
+							"azurerm_resource_group.test",
+						],
+						"name": [],
+						"resource_group_name": [
+							"azurerm_resource_group.test.name",
+							"azurerm_resource_group.test",
+						],
+					},
+				},
+			},
+			"azurerm_resource_group": {
+				"test": {
+					"config": {
+						"location": "West US 2",
+						"name":     "testRG",
+					},
+					"provisioners": null,
+					"references": {
+						"location": [],
+						"name":     [],
+					},
+				},
+			},
+			"azurerm_subnet": {
+				"test": {
+					"config": {
+						"address_prefixes": [
+							"10.0.2.0/24",
+						],
+						"name": "testsub",
+					},
+					"provisioners": null,
+					"references": {
+						"address_prefixes": [],
+						"name":             [],
+						"resource_group_name": [
+							"azurerm_resource_group.test.name",
+							"azurerm_resource_group.test",
+						],
+						"virtual_network_name": [
+							"azurerm_virtual_network.test.name",
+							"azurerm_virtual_network.test",
+						],
+					},
+				},
+			},
+			"azurerm_virtual_machine": {
+				"test": {
+					"config": {
+						"delete_data_disks_on_termination": true,
+						"delete_os_disk_on_termination":    true,
+						"os_profile": [
+							{
+								"admin_password": "Password1234!",
+								"admin_username": "testadmin",
+								"computer_name":  "hostname",
+							},
+						],
+						"os_profile_linux_config": [
+							{
+								"disable_password_authentication": false,
+							},
+						],
+						"storage_image_reference": [
+							{
+								"offer":     "UbuntuServer",
+								"publisher": "Canonical",
+								"sku":       "16.04-LTS",
+								"version":   "latest",
+							},
+						],
+						"storage_os_disk": [
+							{
+								"caching":           "ReadWrite",
+								"create_option":     "FromImage",
+								"managed_disk_type": "Standard_LRS",
+								"name":              "myosdisk1",
+							},
+						],
+					},
+					"provisioners": null,
+					"references": {
+						"delete_data_disks_on_termination": [],
+						"delete_os_disk_on_termination":    [],
+						"location": [
+							"azurerm_resource_group.test.location",
+							"azurerm_resource_group.test",
+						],
+						"name": [
+							"var.name",
+						],
+						"network_interface_ids": [
+							"azurerm_network_interface.test.id",
+							"azurerm_network_interface.test",
+						],
+						"os_profile": [
+							{
+								"admin_password": [],
+								"admin_username": [],
+								"computer_name":  [],
+							},
+						],
+						"os_profile_linux_config": [
+							{
+								"disable_password_authentication": [],
+							},
+						],
+						"resource_group_name": [
+							"azurerm_resource_group.test.name",
+							"azurerm_resource_group.test",
+						],
+						"storage_image_reference": [
+							{
+								"offer":     [],
+								"publisher": [],
+								"sku":       [],
+								"version":   [],
+							},
+						],
+						"storage_os_disk": [
+							{
+								"caching":           [],
+								"create_option":     [],
+								"managed_disk_type": [],
+								"name":              [],
+							},
+						],
+						"tags": [
+							"var.name",
+							"module.densify.current_type",
+							"module.densify",
+							"module.densify.recommended_type",
+							"module.densify",
+							"module.densify.savings_estimate",
+							"module.densify",
+							"module.densify.predicted_uptime",
+							"module.densify",
+							"var.name",
+						],
+						"vm_size": [
+							"var.instance_type",
+						],
+					},
+				},
+			},
+			"azurerm_virtual_network": {
+				"test": {
+					"config": {
+						"address_space": [
+							"10.0.0.0/16",
+						],
+						"name": "testvn",
+					},
+					"provisioners": null,
+					"references": {
+						"address_space": [],
+						"location": [
+							"azurerm_resource_group.test.location",
+							"azurerm_resource_group.test",
+						],
+						"name": [],
+						"resource_group_name": [
+							"azurerm_resource_group.test.name",
+							"azurerm_resource_group.test",
+						],
+					},
+				},
+			},
+		},
+		"variables": {
+			"densify_fallback": {
+				"default": {
+					"approvalType":             "all",
+					"currentType":              "Standard_DS1_v2",
+					"predictedUptime":          "0",
+					"recommendedType":          "Standard_DS1_v2",
+					"reservedInstanceCoverage": "no",
+					"savingsEstimate":          "0",
+				},
+				"description": "",
+			},
+			"densify_recommendations": {
+				"default": {
+					"test": {
+						"approvalType":             "all",
+						"currentType":              "Standard_DS1_v2",
+						"predictedUptime":          "83.4",
+						"recommendedType":          "Standard_DS2_v2",
+						"reservedInstanceCoverage": "no",
+						"savingsEstimate":          "31.43",
+					},
+				},
+				"description": "",
+			},
+			"instance_type": {
+				"default":     "Standard_DS1_v2",
+				"description": "",
+			},
+			"name": {
+				"default":     "test",
+				"description": "",
+			},
+		},
+	},
+
+	"module.densify": {
+		"data":    {},
+		"modules": {},
+		"outputs": {
+			"approval_type": {
+				"depends_on":  [],
+				"description": "The type of approval for this system (NA, All, Specific size)",
+				"references": [
+					"local.appr_type",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"avg_inst_count_current": {
+				"depends_on":  [],
+				"description": "The current average number of instances running in the ASG",
+				"references": [
+					"local.avg_inst_count_current",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"avg_inst_count_recommended": {
+				"depends_on":  [],
+				"description": "The predicted average number of instances running in the ASG if the recommendations are implemented",
+				"references": [
+					"local.avg_inst_count_recommended",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"cluster": {
+				"depends_on":  [],
+				"description": "The name of the cluster with the running container",
+				"references": [
+					"local.cluster",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"container": {
+				"depends_on":  [],
+				"description": "The name of the container",
+				"references": [
+					"local.container",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"controller_type": {
+				"depends_on":  [],
+				"description": "The type of controller",
+				"references": [
+					"local.controller_type",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"cpu_limit": {
+				"depends_on":  [],
+				"description": "The CPU limit to be implemented, which is either the current CPU limit or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+				"references": [
+					"local.cpu_limit",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"cpu_request": {
+				"depends_on":  [],
+				"description": "The CPU request to be implemented, which is either the current CPU request or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+				"references": [
+					"local.cpu_request",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"current_cpu_limit": {
+				"depends_on":  [],
+				"description": "Current CPU limit for the Kubernetes container",
+				"references": [
+					"local.cur_cpu_limit",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"current_cpu_request": {
+				"depends_on":  [],
+				"description": "Current CPU request for the Kubernetes container",
+				"references": [
+					"local.cur_cpu_request",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"current_desired_capacity": {
+				"depends_on":  [],
+				"description": "The current desired number of instances running in the ASG group",
+				"references": [
+					"local.current_desired_capacity",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"current_mem_limit": {
+				"depends_on":  [],
+				"description": "Current memory limit for the Kubernetes container",
+				"references": [
+					"local.cur_mem_limit",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"current_mem_request": {
+				"depends_on":  [],
+				"description": "Current memory request for the Kubernetes container",
+				"references": [
+					"local.cur_mem_request",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"current_size": {
+				"depends_on":  [],
+				"description": "The current number of copies of the controller that are running. Will be 1 for individual pods",
+				"references": [
+					"local.current_size",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"current_type": {
+				"depends_on":  [],
+				"description": "Current instance size and family",
+				"references": [
+					"local.cur_type",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"defer_recommendation": {
+				"depends_on":  [],
+				"description": "Defer recommending an instance type change until reserved instance coverage for this instance expires",
+				"references": [
+					"local.defer_recommendation",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"defer_until": {
+				"depends_on":  [],
+				"description": "If deferRecommendation = yes, then the expiry date of the RI providing coverage for the current instance is returned",
+				"references": [
+					"local.defer_until",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"desired_capacity": {
+				"depends_on":  [],
+				"description": "The desired capacity to be implemented, which is either the current desired capacity or the recommended average instance count (rounded down) depending on the automation policy and approval status (if approval is enabled)",
+				"references": [
+					"local.desired_capacity",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"display_name": {
+				"depends_on":  [],
+				"description": "The display name of the container, which is combination of the pod or service name and container name",
+				"references": [
+					"local.display_name",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"effort": {
+				"depends_on":  [],
+				"description": "The effort rating for implementing the recommendation",
+				"references": [
+					"local.effort",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"implementation_method": {
+				"depends_on":  [],
+				"description": "Is the system configured to allow automation or manual recommendations",
+				"references": [
+					"local.implementation_method",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"instance_type": {
+				"depends_on":  [],
+				"description": "The instance size and family to be implemented, which is either the current size or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+				"references": [
+					"local.instance_type",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"max_group": {
+				"depends_on":  [],
+				"description": "The maximum group size to be implemented, which is either the current maximum group size or the Densify recommended maximum group size depending on the automation policy and approval status (if approval is enabled)",
+				"references": [
+					"local.max_group",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"max_group_current": {
+				"depends_on":  [],
+				"description": "The current maximum group size of the ASG",
+				"references": [
+					"local.max_group_current",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"max_group_recommended": {
+				"depends_on":  [],
+				"description": "The recommended maximum group size of the ASG",
+				"references": [
+					"local.max_group_recommended",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"mem_limit": {
+				"depends_on":  [],
+				"description": "The memory limit to be implemented, which is either the current memory limit or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+				"references": [
+					"local.mem_limit",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"mem_request": {
+				"depends_on":  [],
+				"description": "The memory request to be implemented, which is either the current memory request or the Densify recommendation, depending on the automation policy and the approval status (if approval is enabled)",
+				"references": [
+					"local.mem_request",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"min_group": {
+				"depends_on":  [],
+				"description": "The minimum group size to be implemented, which is either the current minimum group size or the Densify recommended minimum group size depending on the automation policy and approval status (if approval is enabled)",
+				"references": [
+					"local.min_group",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"min_group_current": {
+				"depends_on":  [],
+				"description": "The current minimum group size of the ASG",
+				"references": [
+					"local.min_group_current",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"min_group_recommended": {
+				"depends_on":  [],
+				"description": "The recommended minimum group size of the ASG",
+				"references": [
+					"local.min_group_recommended",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"namespace": {
+				"depends_on":  [],
+				"description": "The namespace of the running container",
+				"references": [
+					"local.namespace",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"pod_service": {
+				"depends_on":  [],
+				"description": "The pod or service name of the running container. If the container is running in a single pod, then the pod name is displayed. If the container is part of a service, such as a Replication Controller or a Replica Set, then the service name is displayed",
+				"references": [
+					"local.pod_service",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"policy": {
+				"depends_on":  [],
+				"description": "The policy that is used in the analysis",
+				"references": [
+					"local.policy",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"power_state": {
+				"depends_on":  [],
+				"description": "The power state of the instance",
+				"references": [
+					"local.power_state",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"predicted_uptime": {
+				"depends_on":  [],
+				"description": "The predicted percentage of CPU utilization hours over the duration of a month",
+				"references": [
+					"local.p_uptime",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"recommendation_type": {
+				"depends_on":  [],
+				"description": "The type of recommendation (upsize, downsize, resize, just right)",
+				"references": [
+					"local.recommendation_type",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"recommended_cpu_limit": {
+				"depends_on":  [],
+				"description": "Recommended CPU limit for the Kubernetes container",
+				"references": [
+					"local.rec_cpu_limit",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"recommended_cpu_request": {
+				"depends_on":  [],
+				"description": "Recommended CPU request for the Kubernetes container",
+				"references": [
+					"local.rec_cpu_request",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"recommended_mem_limit": {
+				"depends_on":  [],
+				"description": "Recommended memory limit for the Kubernetes container",
+				"references": [
+					"local.rec_mem_limit",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"recommended_mem_request": {
+				"depends_on":  [],
+				"description": "Recommended memory request for the Kubernetes container",
+				"references": [
+					"local.rec_mem_request",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"recommended_type": {
+				"depends_on":  [],
+				"description": "Densify recommended instance size and family",
+				"references": [
+					"local.rec_type",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"savings_estimate": {
+				"depends_on":  [],
+				"description": "The potential monthly savings from modifying the current instance to the Densify recommended instance",
+				"references": [
+					"local.savings",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+		},
+		"providers": {},
+		"resources": {
+			"null_resource": {
+				"densify_spec": {
+					"config":       {},
+					"provisioners": null,
+					"references": {
+						"triggers": [
+							"local.temp_map",
+							"var.densify_unique_id",
+						],
+					},
+				},
+			},
+		},
+		"variables": {
+			"densify_fallback": {
+				"default":     null,
+				"description": "Fallback map of settings that are used for new infrastructure or systems that are missing sizing details from Densify.",
+			},
+			"densify_recommendations": {
+				"default":     null,
+				"description": "Map of maps generated from the Densify Terraform Forwarder. Contains all of the systems with the settings needed to provide details for tagging as Self-Aware and Self-Optimization",
+			},
+			"densify_unique_id": {
+				"default":     null,
+				"description": "Unique ID that both Terraform and Densify can use to track the systems.",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+	[
+		"densify",
+	],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs
